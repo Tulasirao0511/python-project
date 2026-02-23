@@ -1,0 +1,32 @@
+pipeline {
+    agent any // Instructs Jenkins to run the entire pipeline on any available agent
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building the application...' // Replaced with actual build commands (e.g., sh 'make' or sh 'mvn compile')
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Running tests...' // Replaced with test commands (e.g., sh './run-tests.sh' or junit '**/TEST-*.xml')
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying to staging environment...' // Replaced with deployment commands (e.g., sh './deploy.sh')
+            }
+        }
+    }
+    post { // Actions to run after the pipeline completes
+        always {
+            echo 'Pipeline finished.'
+        }
+        success {
+            echo 'Pipeline ran successfully!'
+        }
+        failure {
+            echo 'Pipeline failed. Check logs.'
+        }
+    }
+}
+
